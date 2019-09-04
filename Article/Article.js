@@ -133,11 +133,11 @@ function articleMaker(data) {
   const button = document.createElement('span');
 
   article.appendChild(h2);
-  article.appendChild(button);
   article.appendChild(date);
   article.appendChild(p1);
   article.appendChild(p2);
   article.appendChild(p3);
+  article.appendChild(button);
 
   h2.textContent = data.title;
   date.textContent = data.date;
@@ -146,8 +146,9 @@ function articleMaker(data) {
   p3.textContent = data.thirdParagraph;
   button.textContent = 'view';
 
-  // article.classList.add('article-open');
+  date.classList.add('date');
   article.classList.add('article');
+  button.classList.add('expandButton');
 
   button.addEventListener('click', e => {
     article.classList.toggle('article-open');
