@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'James Grantham is AWESOME',
+    date: 'Yup, since he was born in 1978',
+    firstParagraph: `la la la la la no need to explain, he just is! `,
+
+    secondParagraph: `Big long sentence because I can't think of anything to say apart from this, which is really limited. Big long sentence because I can't think of anything to say apart from this, which is really limited. Big long sentence because I can't think of anything to say apart from this, which is really limited. Big long sentence because I can't think of anything to say apart from this, which is really limited. Big long sentence because I can't think of anything to say apart from this, which is really limited. Big long sentence because I can't think of anything to say apart from this, which is really limited. Big long sentence because I can't think of anything to say apart from this, which is really limited. `,
   }
 ];
 
@@ -113,7 +120,7 @@ const data = [
 
 */
 
-function articleMaker({data}) {
+function articleMaker(data) {
 
   // debugger
 
@@ -126,19 +133,21 @@ function articleMaker({data}) {
   const button = document.createElement('span');
 
   article.appendChild(h2);
+  article.appendChild(button);
   article.appendChild(date);
   article.appendChild(p1);
   article.appendChild(p2);
   article.appendChild(p3);
-  article.appendChild(button);
 
   h2.textContent = data.title;
   date.textContent = data.date;
   p1.textContent = data.firstParagraph;
   p2.textContent = data.secondParagraph;
   p3.textContent = data.thirdParagraph;
+  button.textContent = 'view';
 
-  article.classList.add('article-open')
+  // article.classList.add('article-open');
+  article.classList.add('article');
 
   button.addEventListener('click', e => {
     article.classList.toggle('article-open');
@@ -146,4 +155,9 @@ function articleMaker({data}) {
 
   return article;
 }
+const articles = data.map(articleMaker);
+const articlesContainer = document.querySelector('.articles');
 
+articles.forEach((entry) => {
+  articlesContainer.appendChild(entry)
+});
